@@ -1,0 +1,261 @@
+
+.mainContainer {
+  width: 100%;
+  margin-bottom: 70px;
+  padding: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+/* Listing Toggle */
+
+.listingToggle {
+  display: flex;
+  width: fit-content;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.toggleButton {
+  position: relative;
+  padding: 0 24px 13px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.toggleButton::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: transparent;
+  content: "";
+  transition: background 0.25s ease;
+}
+
+.toggleButton.active {
+  color: var(--color-primary);
+}
+
+.toggleButton.active::after {
+  background: var(--color-accent);
+}
+
+.toggleButton:hover {
+  color: var(--color-primary);
+}
+
+/* Search */
+
+.searchRow {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.searchInputWrapper {
+  position: relative;
+  flex: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  color: var(--color-text-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  height: 54px;
+  padding: 0 18px 0 50px;
+  border: 1px solid var(--color-border);
+  outline: none;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  transition: border-color 0.25s ease;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-light);
+}
+
+.searchInput:focus {
+  border-color: var(--color-accent);
+}
+
+/* Search Button */
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 125px;
+  height: 54px;
+  gap: 12px;
+  padding: 0 22px;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.searchButton:hover {
+  background: #292929;
+  transform: translateY(-1px);
+}
+
+/* Filters Header */
+
+.filtersHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.filtersTitle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.clearButton {
+  padding: 0;
+  background: transparent;
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.clearButton:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Filter Grid */
+
+.filtersGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.filterGroup label {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+
+.filterGroup select {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  outline: none;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+}
+
+.filterGroup select:hover {
+  border-color: #d4cfc5;
+}
+
+.filterGroup select:focus {
+  border-color: var(--color-accent);
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .filtersGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .mainContainer {
+    margin-bottom: 55px;
+    padding: 20px;
+  }
+
+  .listingToggle {
+    margin-bottom: 20px;
+  }
+
+  .toggleButton {
+    padding: 0 20px 12px;
+  }
+
+  .searchRow {
+    flex-direction: column;
+  }
+
+  .searchButton {
+    width: 100%;
+  }
+
+  .filtersHeader {
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+
+  .filtersGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .mainContainer {
+    padding: 18px;
+  }
+
+  .filtersTitle {
+    font-size: 9px;
+  }
+
+  .clearButton {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,73 @@
+                AMAN REAL ESTATE BUSINESS
+                         │
+          ┌──────────────┴──────────────┐
+          ↓                             ↓
+    PUBLIC WEBSITE                 YOUR ADMIN
+    (Customers)                    (Private)
+          │                             │
+    Properties                    Add Property
+    Buy / Rent                    Edit Property
+    Property Details              Delete Property
+    About You                     Manage Leads
+    Contact                       Enquiries
+    Consultation                  Appointments
+    WhatsApp                     Dashboard
+
+                    AMAN ESTATE AGENCY
+                           │
+          ┌────────────────┴────────────────┐
+          │                                 │
+       Next.js                         Express + TS
+       Frontend                           Backend
+          │                                 │
+          │                    ┌────────────┼────────────┐
+          │                    │            │            │
+          │                  Auth        Properties      AI
+          │                    │            │            │
+          │                  JWT        MongoDB       LLM API
+          │                    │            │            │
+          │                    └────────────┼────────────┘
+          │                                 │
+          └────────────── REST API ─────────┘
+
+
+Admin 
+/admin/login
+Dashboard
+│
+├── Properties
+│   ├── Add
+│   ├── Edit
+│   ├── Delete
+│   └── Mark Sold/Rented
+│
+├── Enquiries
+│
+├── Consultations
+│
+├── Appointments
+│
+└── Settings
+
+/admin
+/admin/login
+/admin/dashboard
+/admin/properties
+/admin/properties/new
+/admin/enquiries
+/admin/consultations
+/admin/appointments
+
+
+Web
+
+amaanproperties.com
+/
+├── /properties
+├── /properties/[slug]
+├── /buy
+├── /rent
+├── /commercial
+├── /about
+├── /contact
+└── /consultation

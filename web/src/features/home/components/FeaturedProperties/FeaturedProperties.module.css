@@ -1,0 +1,374 @@
+.mainContainer {
+  width: 100%;
+  padding: 120px 0;
+  background: var(--color-background);
+}
+
+.container {
+  width: min(
+    calc(100% - 64px),
+    var(--container-width)
+  );
+
+  margin-inline: auto;
+}
+
+   /* SECTION HEADER */
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 54px;
+}
+
+.headingSection {
+  max-width: 650px;
+}
+
+.eyebrow {
+  margin-bottom: 14px;
+
+  color: var(--color-accent);
+
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+.heading {
+  margin-bottom: 18px;
+
+  color: var(--color-primary);
+
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 500;
+
+  line-height: 0.95;
+  letter-spacing: -1.5px;
+}
+
+.description {
+  max-width: 520px;
+
+  color: var(--color-text-muted);
+
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 1.7;
+}
+
+   /* VIEW ALL */
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding-bottom: 7px;
+
+  color: var(--color-primary);
+
+  border-bottom: 1px solid var(--color-primary);
+
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.viewAll:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+   /* CAROUSEL */
+ 
+
+.carouselWrapper {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.carouselTrack {
+  --carousel-gap: 18px;
+
+  display: flex;
+  gap: var(--carousel-gap);
+
+  width: max-content;
+
+  transform: translateX(
+    calc(
+      -1 *
+      var(--carousel-index) *
+      (
+        var(--card-width) +
+        var(--carousel-gap)
+      )
+    )
+  );
+
+  transition:
+    transform 0.65s
+    cubic-bezier(0.76, 0, 0.24, 1);
+
+  will-change: transform;
+
+  --card-width: calc(
+    (min(var(--container-width), calc(100vw - 64px)) - 36px) / 3
+  );
+}
+
+.carouselItem {
+  width: var(--card-width);
+
+  flex: 0 0 var(--card-width);
+}
+
+   /* CAROUSEL BUTTONS */
+
+.controlButton {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(252, 252, 250, 0.96);
+  color: var(--color-primary);
+
+  border: 1px solid var(--color-border);
+
+  transform: translateY(-50%);
+
+  box-shadow: 0 6px 20px rgba(23, 23, 23, 0.08);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.previousButton {
+  left: 16px;
+}
+
+.nextButton {
+  right: 16px;
+}
+
+.controlButton:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: #ffffff;
+
+  border-color: var(--color-primary);
+
+  transform: translateY(-50%) scale(1.05);
+}
+
+.controlButton:active:not(:disabled) {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.controlButton:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* =================================
+   CAROUSEL FOOTER
+================================= */
+
+.carouselFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin-top: 32px;
+}
+
+.carouselProgress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--color-text-muted);
+
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+}
+
+.progressLine {
+  display: block;
+
+  width: 80px;
+  height: 1px;
+
+  background: var(--color-border);
+}
+
+   /* STATES */
+
+.loadingText,
+.errorText {
+  color: var(--color-text-muted);
+
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+   /* TABLET 2 CARDS */
+
+@media (max-width: 1000px) {
+  .mainContainer {
+    padding: 90px 0;
+  }
+
+  .carouselTrack {
+    --card-width: calc(
+      (100vw - 56px - 18px) / 2
+    );
+  }
+
+  .controlButton {
+    width: 42px;
+    height: 42px;
+  }
+
+  .previousButton {
+    left: 10px;
+  }
+
+  .nextButton {
+    right: 10px;
+  }
+}
+
+
+   /* MOBILE 1 CARD + NEXT CARD PREVIEW */
+
+@media (max-width: 768px) {
+  .mainContainer {
+    padding: 76px 0;
+  }
+
+  .container {
+    width: calc(100% - 40px);
+  }
+
+  /* HEADER */
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 28px;
+
+    margin-bottom: 38px;
+  }
+
+  .heading {
+    font-size: clamp(
+      44px,
+      13vw,
+      60px
+    );
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  /* CAROUSEL */
+
+  .carouselWrapper {
+    width: calc(100vw - 20px);
+
+    overflow: hidden;
+  }
+
+  .carouselTrack {
+    --carousel-gap: 14px;
+
+    --card-width: calc(
+      100vw - 84px
+    );
+  }
+
+  /* BUTTONS */
+
+  .controlButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .previousButton {
+    left: 7px;
+  }
+
+  .nextButton {
+    right: 7px;
+  }
+
+  /* FOOTER */
+
+  .carouselFooter {
+    margin-top: 24px;
+  }
+
+  .progressLine {
+    width: 45px;
+  }
+}
+
+
+   /* SMALL MOBILE */
+
+@media (max-width: 420px) {
+  .carouselTrack {
+    --card-width: calc(
+      100vw - 68px
+    );
+  }
+
+  .controlButton {
+    width: 38px;
+    height: 38px;
+  }
+
+  .previousButton {
+    left: 5px;
+  }
+
+  .nextButton {
+    right: 5px;
+  }
+}
